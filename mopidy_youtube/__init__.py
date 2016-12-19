@@ -6,7 +6,7 @@ import os
 from mopidy import config, ext
 
 
-__version__ = '2.0.2'
+__version__ = '2.0.1'
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +23,9 @@ class Extension(ext.Extension):
 
     def get_config_schema(self):
         schema = super(Extension, self).get_config_schema()
+        schema['search_results'] = config.Integer()
+        schema['playlist_max_videos'] = config.Integer()
+        schema['api_key'] = config.String()
         return schema
 
     def setup(self, registry):
